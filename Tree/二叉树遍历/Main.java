@@ -132,13 +132,7 @@ class Solution {
         return result;
     }
 
-    private void traversal3(TreeNode root, List<Integer> result) {
-        if (root == null)
-            return;
-        traversal2(root.left, result);
-        traversal2(root.right, result);
-        result.add(root.val);
-    }
+    
 
 
 
