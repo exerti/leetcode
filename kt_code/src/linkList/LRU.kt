@@ -1,0 +1,4 @@
+package linkList
+
+class LRU {
+}
