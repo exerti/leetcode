@@ -173,13 +173,15 @@ class LinkedList {
 
     //移除链表元素
     fun removeElements(head: ListNode?, `val`: Int): ListNode? {
-        var current =  head;
+        var dummy = ListNode(0)
+        dummy.next = head
+        var current = dummy
         while(current.next!=null){
             if(current.`val` ==`val`){
-                    current.next = current->next->next;
+                    current.next = current.next?.next
             }
         }
-        return head;
+        return dummy.next
 
     }
 }
