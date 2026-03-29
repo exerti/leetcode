@@ -5,7 +5,7 @@ class 反转链表 {
 
 //保存 赋值 前进
 fun reverseList(head: ListNode?): ListNode? {
-   var pre: ListNode? = null
+    var pre: ListNode? = null
     var cur: ListNode? = head
     while (cur != null) {
         var next = cur.next
