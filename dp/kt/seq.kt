@@ -2,13 +2,10 @@ class SeqSolution {
     fun lengthOfLIS(nums: IntArray): Int {
         val n = nums.size
         if (n <= 1) return n
-
         // dp[i] 表示以 nums[i] 结尾的最长递增子序列长度
         val dp = IntArray(n) { 1 }
-
         for (i in 1 until n) {
             //内层循环是找当前元素之前所有比它小的元素，取最长的子序列长度 +1。
-
             for (j in 0 until i) {
                 if (nums[i] > nums[j]) {
                     dp[i] = maxOf(dp[i], dp[j] + 1)

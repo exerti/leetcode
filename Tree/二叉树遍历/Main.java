@@ -151,7 +151,7 @@ class Solution {
 
             if (node == null) {
                 // 遇到标记，访问真正的节点
-                result.add(stack.pop().val);
+               result.add(stack.pop().val);
             } else {
                 // 入栈顺序：右、左、null、根
                 if (node.right != null) stack.push(node.right);
