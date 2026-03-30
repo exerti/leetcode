@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="版本号排序">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/other/版本号排序.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
