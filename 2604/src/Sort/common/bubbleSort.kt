@@ -16,7 +16,7 @@ fun Bubble(array: Array<Int>):Array<Int> {
     return array;
 }
 
-fun print_array(array: Array<Int>) {
+private fun print_array(array: Array<Int>) {
     for(j in 0 until array.size){
         print(array[j].toString()+"  ")
     }

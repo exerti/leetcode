@@ -1,7 +1,5 @@
 package ListNode
 
-class 反转链表 {
-}
 
 //保存 赋值 前进
 fun reverseList(head: ListNode?): ListNode? {

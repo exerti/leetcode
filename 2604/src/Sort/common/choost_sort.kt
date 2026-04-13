@@ -22,6 +22,12 @@ fun choost_sort(array: Array<Int>):Array<Int> {
 }
 
 
+private fun print_array(array: Array<Int>) {
+    for(j in 0 until array.size){
+        print(array[j].toString()+"  ")
+    }
+}
+
 fun main() {
     val array = arrayOf(6,7,8,9,10,1,2,3,4,5,6,7,8,9,10)
     val sort = choost_sort(array);

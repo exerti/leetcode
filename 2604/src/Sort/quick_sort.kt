@@ -32,6 +32,12 @@ fun partition(array: ArrayList<Int>, low: Int, high: Int): Int {
 }
 
 
+private fun print_array(array: ArrayList<Int>) {
+    for (j in 0 until array.size) {
+        print(array[j].toString() + "  ")
+    }
+}
+
 fun main() {
     var array = ArrayList<Int>()
     array.add(5)
@@ -48,4 +54,30 @@ fun main() {
 
     quick_sort(array)
     print_array(array)
+}
+
+fun quick_sort_0407(array: ArrayList<Int>, low: Int, high: Int){
+    if(low>high) return
+    val pivot = partition_0407(array,low,high)
+    quick_sort_0407(array,0,pivot-1)
+    quick_sort_0407(array,pivot+1,high)
+}
+
+fun partition_0407(array: ArrayList<Int>, low: Int, high: Int):Int{
+  val pivot = array[low]
+  var i = low+1
+  for(j in low+1..high){
+   
+    if(array[j]<pivot){
+        val value = array[i]
+        array[i]=array[j]
+        array[j]=value
+        i++
+    }
+  }
+
+  val temp = array[low]
+  array[low]=array[i-1]
+  array[i-1]=temp
+  return i-1
 }

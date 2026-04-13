@@ -1,8 +1,5 @@
 package ListNode
 
-class 设计链表 {
-}
-
 
 class MyLinkedList() {
     var size = 0  // 链表长度

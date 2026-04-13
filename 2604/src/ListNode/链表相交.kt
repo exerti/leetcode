@@ -1,8 +1,5 @@
 package ListNode
 
-class 链表相交 {
-}
-
 fun getIntersectionNode(headA: ListNode?, headB: ListNode?): ListNode? {
     var pA = headA
     var pB = headB
