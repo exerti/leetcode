@@ -41,3 +41,22 @@ fun main() {
     println(lru.get("b")) // null（已被淘汰）
     println(lru.get("d")) // 3
 }
+
+
+class LrucCache0414<k,v>(private val capacity:Int){
+
+    private val cache = LinkedHashMap<k,v>(capacity, 0.75f, true)
+
+    fun get(key:k):v?{
+        val value = cache[key]
+        return  value
+    }
+
+    fun set(key: k,v: v){
+        cache[key] = v
+        if(cache.size > capacity) {
+            val oldestKey = cache.entries.iterator().next().key
+            cache.remove(oldestKey)
+        }
+    }
+}
