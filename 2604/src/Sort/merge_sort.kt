@@ -30,7 +30,7 @@ fun merge(left: ArrayList<Int>, right: ArrayList<Int>): ArrayList<Int> {
 
 }
 
-fun print_array(array: ArrayList<Int>) {
+private fun print_array(array: ArrayList<Int>) {
     for (j in 0 until array.size) {
         print(array[j].toString() + "  ")
     }
@@ -52,4 +52,34 @@ fun main() {
 
     val quick_sort = merge_sort(array);
     print_array(quick_sort)
+}
+
+
+fun sort_0407(array:ArrayList<Int>):ArrayList<Int>{
+  var size = array.size;
+  if(size<=1) return array;
+  var mid = size/2
+  var left =  sort_0407(ArrayList(array.subList(0,mid)))
+  var right =  sort_0407(ArrayList(array.subList(mid,size)))
+  return merge_0407(left,right)
+}
+fun merge_0407(left:ArrayList<Int>,right:ArrayList<Int>):ArrayList<Int>{
+  val array = ArrayList<Int>()
+  var i =0 
+  var j = 0 
+  while(i<left.size&&j<right.size){
+     if (left[i] <= right[j]) {
+            array.add(left[i++])
+        } else {
+            array.add(right[j++])
+        }
+  }
+   while (i < left.size) {
+        array.add(left[i++])
+    }
+    while (j < right.size) {
+        array.add(right[j++])
+    }
+
+    return array
 }

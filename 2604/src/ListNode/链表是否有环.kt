@@ -1,7 +1,5 @@
 package ListNode
 
-class 链表是否有环 {
-}
 
 // 判断链表是否有环（正确的快慢指针）
 fun hasCycle(head: ListNode?): Boolean {

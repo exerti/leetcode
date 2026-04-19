@@ -1,8 +1,5 @@
 package ListNode
 
-class 两两交换链表中的节点 {
-}
-
 
 fun swapPairs(head: ListNode?): ListNode? {
 

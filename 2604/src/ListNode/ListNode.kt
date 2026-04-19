@@ -7,6 +7,16 @@ class ListNode(var `val`: Int) {
 }
 
 
+fun  printListNode(node: ListNode?) {
+    var root: ListNode? = node
+    if (root != null) {
+        while (root != null) {
+            print("${root.`val`} -> ")
+            root = root.next
+        }
+    }
+    println()
+}
 
 
 
