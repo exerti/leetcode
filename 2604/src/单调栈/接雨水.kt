@@ -90,3 +90,28 @@ fun main() {
 //    }
 //    print(']')
 }
+
+/*
+* 对任意位置 i，真实可接水量是
+
+water(i)=min(maxLeft(i), maxRight(i)) - height[i]。
+
+算法维护不变式：
+
+leftCeil 是当前左侧已扫描区域最高值；
+rightCeil 是当前右侧已扫描区域最高值；
+已处理过的位置水量都已被正确结算且不会再改。
+当 leftCeil < rightCeil 时，处理左端是安全的：
+
+此时左端当前位置的上界一定是 min(maxLeft,maxRight)=leftCeil（右边至少有 rightCeil 这么高，且 rightCeil 更大），
+
+所以该格水量已确定为 leftCeil-height[l]，不会依赖未来信息。
+
+对称地，leftCeil >= rightCeil 时处理右端同理。
+
+每轮只移动一端，且每个下标只被处理一次，不重不漏。
+
+因此总和正确，算法正确。
+*
+*
+* */
