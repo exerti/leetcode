@@ -1,5 +1,6 @@
 package 单调栈
 
+//维护一个队列，遍历数组，每次遇到一个新的大的数字 ，就把前面的都给复制
 class Solution {
     fun dailyTemperatures(temperatures: IntArray): IntArray {
         var n = temperatures.size
