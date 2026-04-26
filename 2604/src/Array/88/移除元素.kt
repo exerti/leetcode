@@ -18,3 +18,42 @@ fun removeElement(nums: IntArray, `val`: Int): Int {
     }
     return slow // slow 就是最终新数组长度
 }
+
+
+/**
+ * 输入：nums = [3,2,2,3], val = 3
+ * 输出：2, nums = [2,2,_,_]
+ * 解释：你的函数应该返回 k = 2, 并且 nums 中的前两个元素均为 2。
+ * 你在返回的 k 个元素之外留下了什么并不重要（因此它们并不计入评测）。
+ */
+
+fun review_remove(nums: IntArray,`val`: Int): Int {
+    var slow = 0
+    for (fast in nums.indices) {
+        if (nums[fast] != `val`) {
+            nums[slow++] = nums[fast]
+        }
+    }
+    return  slow+1
+}
+
+
+/**
+ * 双指针 slow fast  移动数组
+ */
+
+
+fun main() {
+//    var test_nums = intArrayOf(0,0,1,1,1,2,2,3,3,4)
+//    review_remove(test_nums, 1)
+//    println(
+//        test_nums.contentToString()
+//    )
+
+    var test_nums = intArrayOf(3,2,2,3)
+    review_remove(test_nums, 3)
+    println(
+        test_nums.contentToString()
+    )
+
+}

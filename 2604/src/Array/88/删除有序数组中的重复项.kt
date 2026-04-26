@@ -1,7 +1,5 @@
 package Array.`88`
 
-class 删除有序数组中的重复项 {
-}
 
 fun removeDuplicates(nums: IntArray): Int {
     if (nums.isEmpty()) return 0 // 空数组直接返回
@@ -18,4 +16,32 @@ fun removeDuplicates(nums: IntArray): Int {
     }
 
     return slow + 1 // 长度 = 下标 + 1
+}
+
+
+/**
+ * 输入：nums = [1,1,2]
+ * 输出：2, nums = [1,2,_]
+ */
+
+
+fun removeDuplicates_reveiw(nums:IntArray): Int {
+    if(nums.isEmpty()) return 0
+    var slow = 0
+    for (fast in 1  until nums.size) {
+        if (nums[fast] != nums[slow]) {
+            slow++
+            nums[slow] = nums[fast]
+        }
+    }
+    return  slow+1
+}
+
+fun main() {
+//    var test_nums = intArrayOf(1,1,2)
+//    print(removeDuplicates_reveiw(test_nums))
+    var test_nums = intArrayOf(0,0,1,1,1,2,2,3,3,4)
+    print(removeDuplicates_reveiw(test_nums))
+    println()
+    print(test_nums.contentToString())
 }
