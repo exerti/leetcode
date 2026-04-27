@@ -72,3 +72,69 @@ class ManualLruCache<K, V>(private val capacity: Int) {
         return tailNode
     }
 }
+
+
+
+class  TLRU<K,V>(private let capacity:Int) {
+
+    private data class TNode<K,V> {
+        val key: K?
+        var value: V?
+        var pre: TNode<K,V>?
+        var next: TNode<K,V>?
+    }
+
+    var hashMap =  HashMap<K, Node<K, V>>()
+
+    var head :TNode<K,V> =TNode(null,null,null,null)
+    var tail :TNode<K,V> =TNode(null,null,null,null)
+
+    init{
+        head.next = tail
+        tail.pre = head
+    }
+
+
+    fun get(key:K):V?{
+       var node=  hashmap[key]
+       if(node==null)  return null
+       moveToHead(node)
+       return node.value
+    }
+
+    fun set(key:K,value:V){
+        val existingNode = map[key]
+        if(existingNode){
+           moveToHead(node)
+           map[key]=value
+        }else{
+            var newNode = TNode(key,value,null,null)
+            map[key] = newNode
+            addToHead(newNode)
+            if(hashmap.size>capacity){
+                val removed = removeTail()
+                removed?.key?.let { map.remove(it) }
+            }
+        }
+
+    }
+
+    fun removeNode(key:K){
+
+    }
+    fun addToHead(){
+
+    }
+
+    fun moveToHead(){
+
+    }
+
+    fun deleteTail(){
+     
+    }
+
+    
+
+    
+}
