@@ -13,3 +13,4 @@ fun reverseList(head: ListNode?): ListNode? {
     }
     return pre
 }
+
