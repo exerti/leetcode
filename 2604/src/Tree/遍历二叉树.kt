@@ -4,9 +4,6 @@ import java.lang.reflect.Array
 import java.util.LinkedList
 import java.util.Stack
 
-class 遍历二叉树 {
-}
-
 fun preorderTraversal(root: TreeNode?): List<Int> {
     val res = mutableListOf<Int>()
     fun dfs(node: TreeNode?) {
@@ -66,7 +63,6 @@ fun preorderTraversalUseStack(root: TreeNode?): List<Int> {
     return res
 }
 
-
 fun inorderTraversalUseStack(root: TreeNode?): List<Int> {
     val res = mutableListOf<Int>()
     if(root == null) return res
@@ -86,8 +82,6 @@ fun inorderTraversalUseStack(root: TreeNode?): List<Int> {
     }
     return res
 }
-
-
 
 fun postorderTraversalUseStack(root: TreeNode?): List<Int> {
     val res = mutableListOf<Int>()
