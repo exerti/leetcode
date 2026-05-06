@@ -1,6 +1,10 @@
 package ListNode
 
-
+/**
+ * 1、快指针先走k步
+ * 2、快满指针同时走
+ * 3、
+ */
 fun deleteNodeK(node: ListNode?, k: Int): ListNode? {
     if (node == null) return node
     var dummy = ListNode(-1)
@@ -16,7 +20,6 @@ fun deleteNodeK(node: ListNode?, k: Int): ListNode? {
         slow = slow?.next
     }
     slow?.let { it.next = slow.next?.next }
-
     return dummy.next
 }
 

@@ -60,3 +60,4 @@ class LrucCache0414<k,v>(private val capacity:Int){
         }
     }
 }
+
