@@ -1,117 +1,27 @@
 package 单调栈
 
-import kotlin.math.max
-
 fun trap(height: IntArray): Int {
-    // 小于 3 根柱子不可能形成凹槽，无法接水
-    if (height.size <= 2) return 0
-
-    // l/r 分别从两端向中间收缩
-    var l = 0
-    var r = height.size - 1
-
-    // cap: 当前累计接到的总水量
-    var cap = 0
-
-    // leftCeil: [0..l] 区间出现过的最高柱子
-    // rightCeil: [r..n-1] 区间出现过的最高柱子
-    var leftCeil = height.first()
-    var rightCeil = height.last()
-
-    // 只要双指针未交错，就继续处理
-    while (l <= r) {
-        // 哪边“天花板”更低，就先结算哪边
-        // 因为一格能装的水量由 min(左最高,右最高) 决定
-        // 当 leftCeil < rightCeil 时，左侧这一格的上限已经确定为 leftCeil
-        if (leftCeil < rightCeil) {
-            // 当前左格可接水 = 左侧上限 - 当前柱高
-            // 不会出现负数：leftCeil 始终是 [0..l] 的最大值，必然 >= height[l]
-            cap += leftCeil - height[l]
-
-            // 结算完当前左格后，左指针右移，准备处理下一格
-            l++
-
-            // 更新左侧最高柱（供后续格子计算上限）
-            if (l < height.size) {
-                leftCeil = max(leftCeil, height[l])
-            }
-        } else {
-            // 对称逻辑：当 rightCeil <= leftCeil 时，先结算右侧
-            cap += rightCeil - height[r]
-
-            // 右指针左移，处理下一格
-            r--
-
-            // 更新右侧最高柱
-            if (r >= 0) {
-                rightCeil = max(rightCeil, height[r])
-            }
-        }
-    }
-
-    // 双指针相遇后，所有格子都已被结算
-    return cap
-}
-
-fun trap2(height: IntArray): Int {
-
-    if (height.size <= 2) return 0
+  if(height.size<=2) return 0
     var left = 0
     var right = height.size - 1
-    var cap = 0
-    var leftCeil = height.first()
-    var rightCeil = height.last()
+    var leftMax = 0
+    var rightMax = 0
+    var ans = 0
     while (left <= right) {
-        if (leftCeil < rightCeil) {
-            cap+= leftCeil-height[left]
+        leftMax = Math.max(leftMax,height[left])
+        rightMax = Math.max(rightMax,height[right])
+        if (leftMax < rightMax) {
+            ans+=  leftMax- height[left]
             left++
-            if(left<height.size) {
-                leftCeil = max(leftCeil, height[left])
-            }
-        } else {
-           cap += rightCeil - height[right]
+        }else{
+            ans += rightMax- height[right]
             right--
-            if (right>=0) {
-                rightCeil = max(rightCeil, height[right])
-            }
         }
     }
-    return cap
+    return ans
 }
-
 
 fun main() {
-    val input = intArrayOf(0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1)
-    println(trap2(input))
 
-//    print('[')
-//    for (temperature in temperatures) {
-//        print(temperature.toString() +",")
-//    }
-//    print(']')
+ print(    trap(intArrayOf(0,1,0,2,1,0,1,3,2,1,2,1)))
 }
-
-/*
-* 对任意位置 i，真实可接水量是
-
-water(i)=min(maxLeft(i), maxRight(i)) - height[i]。
-
-算法维护不变式：
-
-leftCeil 是当前左侧已扫描区域最高值；
-rightCeil 是当前右侧已扫描区域最高值；
-已处理过的位置水量都已被正确结算且不会再改。
-当 leftCeil < rightCeil 时，处理左端是安全的：
-
-此时左端当前位置的上界一定是 min(maxLeft,maxRight)=leftCeil（右边至少有 rightCeil 这么高，且 rightCeil 更大），
-
-所以该格水量已确定为 leftCeil-height[l]，不会依赖未来信息。
-
-对称地，leftCeil >= rightCeil 时处理右端同理。
-
-每轮只移动一端，且每个下标只被处理一次，不重不漏。
-
-因此总和正确，算法正确。
-*
-*
-* */
