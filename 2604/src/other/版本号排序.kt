@@ -53,3 +53,13 @@ fun main() {
     println("排序后: $sorted")
     // 期望: [1.5.0, 1.45.0, 3.3.3.3.3, 6]
 }
+
+
+
+ fun sort(versions: List<String>): List<String>{
+   return versions.sortedWith(Compatator{ v1 , v2 ->
+     val parts1 = v1
+   
+   
+   })
+ }

@@ -12,3 +12,16 @@ fun getIntersectionNode(headA: ListNode?, headB: ListNode?): ListNode? {
 
     return pA // 相交则返回节点，不相交则返回 null
 }
+
+fun getIntersectionNode2(headA: ListNode?, headB: ListNode?): ListNode? {
+    var pA = headA
+    var pB = headB
+
+   while(pA!=pB){
+    pA = if(pA==null) headB else pA.next
+    pB = if(pB==null) headA else pB.next
+
+   }
+
+    return pA // 相交则返回节点，不相交则返回 null
+}
