@@ -104,4 +104,77 @@ fun main() {
     list.removeFirst()
     list.removeLast()
     println("删除首尾后：$list")
+
+    // ==============================
+    // 6. 空运算（?. ?: !! as?）
+    // ==============================
+    println("\n===== 6. 空运算 =====")
+    var nullableStr: String? = null
+
+    // ?. 安全调用：如果为 null 就跳过
+    println("安全调用：${nullableStr?.length}") // null
+
+    // ?: Elvis 运算符：如果为 null 就取默认值
+    val len = nullableStr?.length ?: 0
+    println("Elvis 默认值：$len") // 0
+
+    // !! 强制解包：确定不为 null 时使用（为 null 会抛 NPE）
+    nullableStr = "hello"
+    println("强制解包：${nullableStr!!.length}") // 5
+
+    // as? 安全转换：转换失败返回 null
+    val obj: Any = 123
+    println("安全转 String：${obj as? String}") // null
+    println("安全转 Int：${obj as? Int}") // 123
+
+    // ==============================
+    // 7. sorted / sortedBy 排序
+    // ==============================
+    println("\n===== 7. sorted 排序 =====")
+    val nums = arrayOf(3, 1, 4, 1, 5)
+
+    // sorted() 自然升序，返回新 List
+    val sortedNums = nums.sorted()
+    println("sorted：$sortedNums")
+
+    // sortedDescending() 降序
+    val descNums = nums.sortedDescending()
+    println("sortedDescending：$descNums")
+
+    // sortedBy {} 按某个字段排序，返回新 List
+    val intervals = arrayOf(intArrayOf(1, 4), intArrayOf(2, 3), intArrayOf(0, 5))
+    val sortedByLeft = intervals.sortedBy { it[0] }
+    println("sortedBy 左端点：${sortedByLeft.map { it.toList() }}")
+
+    // sortedByDescending {} 按字段降序
+    val sortedByRightDesc = intervals.sortedByDescending { it[1] }
+    println("sortedByDescending 右端点：${sortedByRightDesc.map { it.toList() }}")
+
+    // sortBy {} 原地排序（修改自身）
+    val mutableNums = mutableListOf(3, 1, 2)
+    mutableNums.sortBy { it }
+    println("sortBy 原地排序：$mutableNums")
+
+    // sortedWith + compareBy 多条件排序
+    val items = listOf("ab", "abc", "a", "abcd")
+    val byLength = items.sortedWith(compareBy({ it.length }, { it }))
+    println("sortedWith 按长度再按字母：$byLength")
+
+    // ==============================
+    // 8. IntArray / Array 常用操作
+    // ==============================
+    println("\n===== 8. IntArray & Array =====")
+    // toList / toTypedArray / toIntArray
+    val intArr = intArrayOf(1, 2, 3)
+    val strArr = arrayOf("a", "b", "c")
+
+    println("IntArray toList：${intArr.toList()}")
+    println("List toIntArray：${listOf(4, 5, 6).toIntArray().toList()}")
+    println("Array toList：${strArr.toList()}")
+    println("List toTypedArray：${listOf("x", "y").toTypedArray().toList()}")
+
+    // first / last / firstOrNull / lastOrNull
+    println("first：${intArr.first()}, last：${intArr.last()}")
+    val emptyArr = intArrayOf()
+    println("firstOrNull 空数组：${emptyArr.firstOrNull()}") // null
 }
