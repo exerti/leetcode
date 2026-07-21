@@ -12,7 +12,7 @@ class LruCache<k, v>(private val capacity: Int) {
     //
     private val cache = LinkedHashMap<k, v>(capacity, 0.75f, true)
 
-    operator fun get(key: k): v? {
+    c fun get(key: k): v? {
         return cache[key]
     }
 

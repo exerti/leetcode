@@ -5,11 +5,11 @@ fun isValid(s: String): Boolean {
     val stack = ArrayDeque<Char>()
     for (c in s) {
         when (c) {
-            '(' -> stack.push(')')
-            '[' -> stack.push(']')
-            '{' -> stack.push('}')
+            '(' -> stack.addLast(')')
+            '[' -> stack.addLast(']')
+            '{' -> stack.addLast('}')
             else -> {
-                if (stack.isEmpty() || stack.pop() != c) return false
+                if (stack.isEmpty() || stack.removeLast() != c) return false
             }
         }
     }
@@ -29,4 +29,21 @@ fun main() {
     check(!isValid("({"))
 
     println("All test cases passed!")
+}
+
+
+
+fun isValid(s: String): Boolean {
+    val stack = ArrayDeque<Char>()
+    for (c in s) {
+        when (c) {
+            '(' -> stack.addLast(')')
+            '[' -> stack.addLast(']')
+            '{' -> stack.addLast('}')
+            else -> {
+                if (stack.isEmpty() || stack.removeLast() != c) return false
+            }
+        }
+    }
+    return stack.isEmpty()
 }

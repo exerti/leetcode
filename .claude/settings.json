@@ -1,4 +1,10 @@
 {
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://api.deepseek.com/anthropic",
+    "ANTHROPIC_AUTH_TOKEN": "sk-461af646c8164313a55723e85f6fc6ad",
+    "ANTHROPIC_MODEL":"deepseek-v4-pro[1m]"
+
+  },
   "permissions": {
     "allow": [
       "mcp__filesystem__search_files"

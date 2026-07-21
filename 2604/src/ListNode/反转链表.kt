@@ -14,3 +14,18 @@ fun reverseList(head: ListNode?): ListNode? {
     return pre
 }
 
+
+
+fun reverse(head:ListNode?):ListNode?{
+            var pre:ListNode? = null
+    var cur:ListNode?=head
+    while(cur!=null){
+        val next = cur.next
+        cur.next = pre
+        pre = cur
+        cur = next
+
+    }
+return pre
+    }
+}
