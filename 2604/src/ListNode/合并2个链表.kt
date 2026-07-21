@@ -20,4 +20,28 @@ fun  mergeTwo(l1: ListNode?, l2:ListNode?):ListNode?{
    tail.next= a?:b
 
    return dummy.next
+
+
+}
+
+
+fun  mergeTwo2(l1: ListNode?, l2:ListNode?):ListNode?{
+    val dummy = ListNode(0)
+    var tail: ListNode = dummy
+    var a = l1
+    var b = l2
+    while(a!=null&&b!=null){
+        if(a.`val`>b.`val`){
+            tail.next=b
+            b=b?.let{it.next}
+        }else{
+            tail.next=a
+            a=a?.let{it.next}
+        }
+        tail = tail.next!!
+
+    }
+    tail.next= a?:b
+    return dummy.next
+
 }
