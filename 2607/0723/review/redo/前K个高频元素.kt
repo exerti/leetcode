@@ -12,6 +12,8 @@ import java.util.PriorityQueue
  */
 class TopKFrequent {
     fun topFreq(nums: IntArray, k: Int): IntArray {
-        // TODO
+        TODO()
+        return intArrayOf();
+
     }
 }

@@ -9,6 +9,7 @@ package review.redo
  */
 class LongestSubstring {
     fun lengthOfLongestSubstring(s: String): Int {
-        // TODO
+        TODO()
+        return TODO("Provide the return value")
     }
 }

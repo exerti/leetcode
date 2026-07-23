@@ -11,6 +11,6 @@ package review.redo
  */
 class FourSum {
     fun fourSum(nums: IntArray, target: Int): List<List<Int>> {
-        // TODO
+        TODO()
     }
 }

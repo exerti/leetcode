@@ -15,6 +15,6 @@ class ListNode(var value: Int) {
  */
 class MergeKLists {
     fun mergeKListNode(lists: Array<ListNode?>): ListNode? {
-        // TODO
+        TODO()
     }
 }

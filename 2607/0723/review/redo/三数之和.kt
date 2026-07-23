@@ -9,6 +9,6 @@ package review.redo
  */
 class ThreeSum {
     fun threeSum(nums: IntArray): List<List<Int>> {
-        // TODO
+        TODO()
     }
 }
