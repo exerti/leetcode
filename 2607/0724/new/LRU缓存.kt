@@ -89,8 +89,8 @@ class Node<K, V>(val key: K, var value: V) {
 class LruCacheImpl<K, V>(val capacity: Int) {
 
     private val map = HashMap<K, Node<K, V>>()
-    private val head = Node<K, V>(null as K, null as V)  // 虚拟头
-    private val tail = Node<K, V>(null as K, null as V)  // 虚拟尾
+    private val head = Node<K, V>(null as K, null as V)
+    private val tail = Node<K, V>(null as K, null as V)
 
     init {
         head.next = tail
@@ -98,47 +98,21 @@ class LruCacheImpl<K, V>(val capacity: Int) {
     }
 
     fun get(key: K): V? {
-        val node = map[key] ?: return null
-        moveToHead(node)
-        return node.value
+        // 1. map 里找不到 → 返回 null
+        // 2. 找到了 → 把节点移到头部，返回值
+        TODO()
     }
 
     fun put(key: K, value: V) {
-        val exist = map[key]
-        if (exist != null) {
-            exist.value = value
-            moveToHead(exist)
-        } else {
-            val node = Node(key, value)
-            map[key] = node
-            addToHead(node)
-            if (map.size > capacity) {
-                val last = removeTail()
-                map.remove(last.key)
-            }
-        }
+        // 1. key 已存在 → 更新值，移到头部
+        // 2. key 不存在 → 新建节点，插入头部
+        //    2a. 如果满了 → 删尾部节点，同时从 map 移除
+        TODO()
     }
 
-    private fun addToHead(node: Node<K, V>) {
-        node.next = head.next
-        node.prev = head
-        head.next?.prev = node
-        head.next = node
-    }
-
-    private fun removeNode(node: Node<K, V>) {
-        node.prev?.next = node.next
-        node.next?.prev = node.prev
-    }
-
-    private fun moveToHead(node: Node<K, V>) {
-        removeNode(node)
-        addToHead(node)
-    }
-
-    private fun removeTail(): Node<K, V> {
-        val last = tail.prev!!
-        removeNode(last)
-        return last
-    }
+    // 辅助方法骨架（自己实现）：
+    // private fun addToHead(node)    — 把 node 插到 head 后面
+    // private fun removeNode(node)   — 从链表中断开 node
+    // private fun moveToHead(node)   — removeNode + addToHead
+    // private fun removeTail(): Node — 删 tail.prev 并返回
 }
