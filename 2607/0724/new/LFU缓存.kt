@@ -94,15 +94,20 @@ class LFUCacheImpl<K, V>(val capacity: Int) {
     }
 
     fun put(key: K, value: V) {
-        val node = keyMap[key]
-        if(node!=null){
-            node.value = value
-            updateFreq(node)
-        }else{
-           if(keyMap.size>k){
-
-           }
-            updateFreq(Node(key,value))
+        val exist = keyMap[key]
+        if (exist != null) {
+            exist.value = value
+            updateFreq(exist)
+        } else {
+            if (keyMap.size >= capacity) {
+                val evictKey = freqMap[minFreq]!!.first()
+                freqMap[minFreq]!!.remove(evictKey)
+                keyMap.remove(evictKey)
+            }
+            val newNode = Node(key, value)
+            keyMap[key] = newNode
+            freqMap.getOrPut(1) { LinkedHashSet() }.add(key)
+            minFreq = 1
         }
     }
 
