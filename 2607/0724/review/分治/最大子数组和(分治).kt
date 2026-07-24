@@ -18,9 +18,9 @@ class DivideMaxSubArray {
     fun dfs(nums: IntArray, left: Int, right: Int): Int {
         if (left >= right) return nums[left]
         val mid = left + (right - left) / 2
-        var _leftMax = dfs(nums, 0, mid)
-        var _rightMax = dfs(nums, mid + 1, right)
-        var _crossMax = 0
+        val _leftMax = dfs(nums, left, mid)
+        val _rightMax = dfs(nums, mid + 1, right)
+        var _crossMax: Int
         var crossLeftMax = 0
         var leftSum = 0
         var crossRightMax = 0
