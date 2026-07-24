@@ -94,7 +94,16 @@ class LFUCacheImpl<K, V>(val capacity: Int) {
     }
 
     fun put(key: K, value: V) {
-        TODO()
+        val node = keyMap[key]
+        if(node!=null){
+            node.value = value
+            updateFreq(node)
+        }else{
+           if(keyMap.size>k){
+
+           }
+            updateFreq(Node(key,value))
+        }
     }
 
     // 频率+1：从旧 freq 集合移除 → 新 freq+1 集合插入 → 维护 minFreq
