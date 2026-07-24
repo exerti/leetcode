@@ -88,11 +88,26 @@ class LFUCacheImpl<K, V>(val capacity: Int) {
     private var minFreq = 0
 
     fun get(key: K): V? {
-        TODO()
+        val node = keyMap[key] ?: return null
+        updateFreq(node)
+        return node.value
     }
 
     fun put(key: K, value: V) {
         TODO()
+    }
+
+    // 频率+1：从旧 freq 集合移除 → 新 freq+1 集合插入 → 维护 minFreq
+    private fun updateFreq(node: Node<K, V>) {
+        val oldFreq = node.freq
+        val oldSet = freqMap[oldFreq]!!
+        oldSet.remove(node.key)                        // 从旧频率集合移除
+        if (oldSet.isEmpty() && oldFreq == minFreq) {  // 旧集合空了且是 minFreq
+            minFreq++                                   // → 最小频率上移
+        }
+        node.freq++                                     // 频率+1
+        freqMap.getOrPut(node.freq) { LinkedHashSet() }
+            .add(node.key)                              // 加入新频率集合
     }
 }
 

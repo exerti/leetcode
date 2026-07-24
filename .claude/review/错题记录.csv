@@ -68,3 +68,8 @@
 2026-07-24,LRU缓存.kt,LRU缓存,设计,逻辑-设计,"removeTail 试图给 val tail 赋值——虚拟尾节点不应被修改",已复习
 2026-07-24,LRU缓存.kt,LRU缓存,设计,逻辑-设计,"put 新节点未 map[key]=node——节点只在链表不在 map",已复习
 2026-07-24,LRU缓存.kt,LRU缓存,设计,逻辑-设计,"removeTail 淘汰时未从 map 移除对应 key",已复习
+2026-07-24,LFU缓存.kt,LFU缓存,设计,类型-空安全,"freqMap[node.freq] 返回 LinkedHashSet?，未处理 null",已复习
+2026-07-24,LFU缓存.kt,LFU缓存,设计,类型-参数,"preFreq.remove(node) 应 remove(node.key)——集合存 K 非 Node",已复习
+2026-07-24,LFU缓存.kt,LFU缓存,设计,语法-声明,"var new 语句不完整——缺类型和赋值",已复习
+2026-07-24,LFU缓存.kt,LFU缓存,设计,语法-声明,"updateFreq 缺 fun 关键字和方法签名",已复习
+2026-07-24,LFU缓存.kt,LFU缓存,设计,语法-返回,"get 中 else 分支无 return 语句",已复习
