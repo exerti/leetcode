@@ -20,14 +20,14 @@ class ThreeSum {
             while (left < right) {
                 val sum = nums[i].toLong() + nums[left] + nums[right]
                 when {
-                    sum == 0 -> {
+                    sum == 0L -> {
                         result.add(intArrayOf(nums[i], nums[left], nums[right]).toList())
                         while (left < right && nums[left] == nums[left + 1]) left++
                         while (left < right && nums[right] == nums[right - 1]) right--
                         left++
                         right--
                     }
-                    sum > 0 -> right--
+                    sum > 0L -> right--
                     else -> {
                         left++
                     }

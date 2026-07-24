@@ -23,7 +23,7 @@ class FourSum {
                 while (left < right) {
                     val sum = nums[i].toLong() + nums[j] + nums[left] + nums[right]
                     when {
-                        sum == target -> {
+                        sum == target.toLong() -> {
                             result.add(
                                 intArrayOf(
                                     nums[j],
@@ -37,7 +37,7 @@ class FourSum {
                             left++
                             right--
                         }
-                        sum > target -> right--
+                        sum > target.toLong() -> right--
                         else -> {
                             left++
                         }
