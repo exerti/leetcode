@@ -79,3 +79,66 @@ class LRUCache(val capacity: Int) {
  *   Java/Kotlin 标准库的 LinkedHashMap 天然支持 LRU
  *   了解它怎么实现的
  */
+
+
+class Node<K, V>(val key: K, var value: V) {
+    var next: Node<K, V>? = null
+    var prev: Node<K, V>? = null
+}
+
+class LruCacheImpl<K, V>(val capacity: Int) {
+
+    private val map = HashMap<K, Node<K, V>>()
+    private val head = Node<K, V>(null as K, null as V)  // 虚拟头
+    private val tail = Node<K, V>(null as K, null as V)  // 虚拟尾
+
+    init {
+        head.next = tail
+        tail.prev = head
+    }
+
+    fun get(key: K): V? {
+        val node = map[key] ?: return null
+        moveToHead(node)
+        return node.value
+    }
+
+    fun put(key: K, value: V) {
+        val exist = map[key]
+        if (exist != null) {
+            exist.value = value
+            moveToHead(exist)
+        } else {
+            val node = Node(key, value)
+            map[key] = node
+            addToHead(node)
+            if (map.size > capacity) {
+                val last = removeTail()
+                map.remove(last.key)
+            }
+        }
+    }
+
+    private fun addToHead(node: Node<K, V>) {
+        node.next = head.next
+        node.prev = head
+        head.next?.prev = node
+        head.next = node
+    }
+
+    private fun removeNode(node: Node<K, V>) {
+        node.prev?.next = node.next
+        node.next?.prev = node.prev
+    }
+
+    private fun moveToHead(node: Node<K, V>) {
+        removeNode(node)
+        addToHead(node)
+    }
+
+    private fun removeTail(): Node<K, V> {
+        val last = tail.prev!!
+        removeNode(last)
+        return last
+    }
+}
