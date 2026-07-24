@@ -13,15 +13,13 @@ import java.util.*
 
 class TopKFrequentHeap {
     fun topKFrequent(nums: IntArray, k: Int): IntArray {
-        val size= nums.size
-        val freq = nums.toList().groupingBy{it}.eachCount()
-        val minHeap = PriorityQueue<Int>(compareBy{freq[it]})
-        for(num in freq.keys){
-            minHeap.offer(num )
-            if(minHeap.size>k){
+        val freq = nums.toList().groupingBy { it }.eachCount()
+        val minHeap = PriorityQueue<Int>(compareBy { freq[it]!! })
+        for (num in freq.keys) {
+            minHeap.offer(num)
+            if (minHeap.size > k) {
                 minHeap.poll()
             }
-
         }
         return minHeap.toIntArray()
     }
