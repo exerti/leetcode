@@ -72,6 +72,38 @@ class LFUCache(val capacity: Int) {
     // private fun updateFreq(node) — 频率+1，从旧集合移到新集合，维护 minFreq
 }
 
+// Node: key + value + freq — LFU 不需要 prev/next 双向链表
+class Node<K, V>(val key: K, var value: V, var freq: Int = 1)
+
+
+class LFUCacheImpl<K, V>(val capacity: Int) {
+
+    // O(1) 查节点
+    private val keyMap = HashMap<K, Node<K, V>>()
+
+    // 频率 → 该频率下的 key 集合（LinkedHashSet 保持插入顺序 → 同频内 LRU）
+    private val freqMap = HashMap<Int, LinkedHashSet<K>>()
+
+    // 当前最小频率，淘汰时 O(1) 定位
+    private var minFreq = 0
+
+    fun get(key: K): V? {
+        TODO()
+    }
+
+    fun put(key: K, value: V) {
+        TODO()
+    }
+}
+
+
+
+
+
+
+
+
+
 // =====================================================================
 // 解法对比 — 填表
 // =====================================================================
