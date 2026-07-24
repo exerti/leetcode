@@ -98,21 +98,46 @@ class LruCacheImpl<K, V>(val capacity: Int) {
     }
 
     fun get(key: K): V? {
-        // 1. map 里找不到 → 返回 null
-        // 2. 找到了 → 把节点移到头部，返回值
-        TODO()
+        val node = map[key] ?: return null
+        moveToHead(node)
+        return node.value
     }
 
     fun put(key: K, value: V) {
-        // 1. key 已存在 → 更新值，移到头部
-        // 2. key 不存在 → 新建节点，插入头部
-        //    2a. 如果满了 → 删尾部节点，同时从 map 移除
-        TODO()
+        val exist = map[key]
+        if (exist != null) {
+            exist.value = value
+            moveToHead(exist)
+        } else {
+            val newNode = Node(key, value)
+            map[key] = newNode
+            addToHead(newNode)
+            if (map.size > capacity) {
+                removeTail()
+            }
+        }
     }
 
-    // 辅助方法骨架（自己实现）：
-    // private fun addToHead(node)    — 把 node 插到 head 后面
-    // private fun removeNode(node)   — 从链表中断开 node
-    // private fun moveToHead(node)   — removeNode + addToHead
-    // private fun removeTail(): Node — 删 tail.prev 并返回
+    private fun addToHead(node: Node<K, V>) {
+        node.next = head.next
+        head.next?.prev = node
+        head.next = node
+        node.prev = head
+    }
+
+    private fun removeNode(node: Node<K, V>) {
+        node.prev?.next = node.next
+        node.next?.prev = node.prev
+    }
+
+    private fun moveToHead(node: Node<K, V>) {
+        removeNode(node)
+        addToHead(node)
+    }
+
+    private fun removeTail() {
+        val last = tail.prev!!
+        removeNode(last)
+        map.remove(last.key)
+    }
 }

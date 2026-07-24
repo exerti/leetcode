@@ -63,3 +63,8 @@
 2026-07-24,LRU缓存.kt,LRU缓存,设计,语法-命名,"set 方法应为 put——LRU 标准 API",已复习
 2026-07-24,LRU缓存.kt,LRU缓存,设计,逻辑-设计,"Node 缺 key 字段——淘汰时需 key 删 map",已复习
 2026-07-24,LRU缓存.kt,LRU缓存,设计,语法-初始化,"Node 的 next/prev 声明为 Node? 但未初始化为 null",已复习
+2026-07-24,LRU缓存.kt,LRU缓存,设计,语法-变量名,"get/put 中 if(value!=null) 变量名错误——value 是参数不是 node",已复习
+2026-07-24,LRU缓存.kt,LRU缓存,设计,语法-变量覆盖,"put 中 else 分支 val node 覆盖了外层 val node",已复习
+2026-07-24,LRU缓存.kt,LRU缓存,设计,逻辑-设计,"removeTail 试图给 val tail 赋值——虚拟尾节点不应被修改",已复习
+2026-07-24,LRU缓存.kt,LRU缓存,设计,逻辑-设计,"put 新节点未 map[key]=node——节点只在链表不在 map",已复习
+2026-07-24,LRU缓存.kt,LRU缓存,设计,逻辑-设计,"removeTail 淘汰时未从 map 移除对应 key",已复习
