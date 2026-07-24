@@ -1,0 +1,10 @@
+优先级,题目名称,算法类型,掌握程度,累计错误,距到期天数,上次失误要点
+🔴高,k个最大元素(快选),快速选择,1,9,0,"变量覆盖参数·概念混淆povit值当索引·判断对象错误·右边界传错·双层return·命名撞标准库"
+🔴高,最大子数组和,DP,1,7,0,"maxSum=null编译错·maxOf拼写·dp[i]用自己非dp[i-1]·返回局部最优·maxSum=0全负数bug·变量混淆maxSum+=nums[i]"
+🔴高,前 K 个高频元素,堆,1,4,0,"PriorityQueue拼写·比较器按值排序·遍历nums非keys·返回List非IntArray"
+🔴高,四数之和,双指针,1,4,0,"忘记sort()·nums[i-1]越界·存索引非值·target硬编码=0"
+🔴高,最大子数组和(分治),分治,1,4,0,"变量混淆crossMax·左右扫描结果混入同变量·dfs边界排除mid致越界·参数名riht拼写"
+🔴高,三数之和,双指针,1,3,0,"when缺{}·存索引非值·缺i>0越界判断+去重遗漏"
+🟡中,合并k个有序链表,堆+链表,2,3,2,"foreach用Java语法head->{}·peek不poll死循环·cur指针不前进"
+🟡中,无重复的最长字串,滑动窗口,2,3,2,"HashMap<String,Int>泛型错·preIndex>=right边界写反·left=right-1收缩位置错"
+🟢低,k个最大元素,堆,3,1,6,"Solution::findKthLargest未绑定receiver"
