@@ -71,13 +71,72 @@ class LRUCache(val capacity: Int) {
 // 变体思考
 // =====================================================================
 /**
- * ▎LFU 缓存 (LeetCode 460)
- *   LRU 按"时间"淘汰，LFU 按"频率"淘汰
- *   需要多维护一个频率维度
+ * =====================================================================
+ * 变体1：LFU 缓存 (LeetCode 460)
+ * =====================================================================
+ * ▎LRU vs LFU 的区别
+ *   LRU: 淘汰"最久没被访问"的 → 时间维度
+ *   LFU: 淘汰"访问次数最少"的  → 频率维度
  *
- * ▎LinkedHashMap
- *   Java/Kotlin 标准库的 LinkedHashMap 天然支持 LRU
- *   了解它怎么实现的
+ * ▎LFU 的难点在哪？
+ *   LRU 只需要一个维度（时间顺序），双向链表一条线搞定。
+ *   LFU 多了"频率"维度，数据结构变成二维：
+ *     - 外层：频率 → 该频率下的节点集合
+ *     - 内层：同一频率内，按时间排序（LRU）
+ *
+ * ▎LFU 的核心数据结构
+ *   HashMap<Key, Node>          → O(1) 查节点
+ *   HashMap<Freq, LinkedHashSet> → 每个频率对应一组节点（保持插入顺序）
+ *   minFreq                      → 记录当前最小频率，淘汰时 O(1) 定位
+ *
+ * ▎LFU 的操作逻辑
+ *   get(key):
+ *     1. 不存在 → 返回 -1
+ *     2. 存在 → 频率+1，从旧频率集合移除，加入新频率集合
+ *   put(key, value):
+ *     1. 存在 → 更新值，频率+1（同 get 的步骤2）
+ *     2. 不存在，没满 → 新建节点，频率=1，加入 freq=1 集合
+ *     3. 不存在，满了 → 淘汰 minFreq 集合中最旧的节点，再插入新节点
+ *
+ * ▎为什么需要 minFreq？
+ *   淘汰时要找"频率最低的节点"。如果每次都遍历所有频率 → O(n)
+ *   维护 minFreq 变量，新增节点时置 1，某个频率集合变空时更新 → O(1)
+ *
+ * ▎手写推演 capacity=2
+ *   put(1,1): freq[1]={1}, minFreq=1
+ *   put(2,2): freq[1]={1,2}, minFreq=1
+ *   get(1):   1 频率 1→2: freq[1]={2}, freq[2]={1}, minFreq=1
+ *   put(3,3): 满了→淘汰 minFreq=1 中最旧的(2), freq[1]={3}, minFreq=1
+ *   get(3):   3 频率 1→2: freq[1] 空了→minFreq=2, freq[2]={1,3}
+ *
+ * =====================================================================
+ * 变体2：LinkedHashMap 实现 LRU
+ * =====================================================================
+ * ▎LinkedHashMap 是什么？
+ *   HashMap + 双向链表，既能 O(1) 存取，又能维护插入/访问顺序。
+ *   Kotlin 中对应的是 LinkedHashMap。
+ *
+ * ▎怎么用它实现 LRU？
+ *   重写 removeEldestEntry 方法：
+ *     - 返回 true → 自动删除最旧的条目
+ *     - 条件：size() > capacity
+ *
+ *   Kotlin 示例：
+ *   ```
+ *   val cache = object : LinkedHashMap<Int, Int>(capacity, 0.75f, true) {
+ *       override fun removeEldestEntry(eldest: Map.Entry<Int, Int>?): Boolean {
+ *           return size > capacity
+ *       }
+ *   }
+ *   ```
+ *
+ * ▎构造参数 (accessOrder = true) 的含义：
+ *   false → 按插入顺序（先插入的算旧）
+ *   true  → 按访问顺序（get/put 后会移到末尾，没访问的算旧）← LRU 用这个
+ *
+ * ▎面试用 LinkedHashMap 会不会太取巧？
+ *   通常考官期望你自己实现（双向链表 + HashMap），但提一句
+ *   "标准库有 LinkedHashMap 可以一行搞定"能体现知识广度。
  */
 
 
