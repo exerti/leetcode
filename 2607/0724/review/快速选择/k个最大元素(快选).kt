@@ -18,8 +18,37 @@ import java.util.*
 
 class KthLargestQuickSelect {
     fun findKthLargest(nums: IntArray, k: Int): Int {
-        TODO()
+        return quickSelect(nums, 0, nums.size - 1, k - 1)
     }
+
+    fun quickSelect(nums: IntArray, left: Int, right: Int, targetIdx: Int): Int {
+        val pivotIdx = doPartition(nums, left, right)
+        return when {
+            pivotIdx == targetIdx -> nums[pivotIdx]
+            pivotIdx > targetIdx  -> quickSelect(nums, left, pivotIdx - 1, targetIdx)
+            else                  -> quickSelect(nums, pivotIdx + 1, right, targetIdx)
+        }
+    }
+
+    fun doPartition(nums: IntArray, left: Int, right: Int): Int {
+        val pivotVal = nums[right]
+        var partitionIdx = left
+        for (i in left until right) {
+            if (nums[i] > pivotVal) {
+                swap(nums, i, partitionIdx)
+                partitionIdx++
+            }
+        }
+        swap(nums, partitionIdx, right)
+        return partitionIdx
+    }
+
+    fun swap(nums: IntArray, i: Int, j: Int) {
+        val temp = nums[i]
+        nums[i] = nums[j]
+        nums[j] = temp
+    }
+
 }
 
 fun main() {

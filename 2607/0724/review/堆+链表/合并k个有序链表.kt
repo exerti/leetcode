@@ -9,10 +9,28 @@ package review
  */
 
 import java.util.*
+import kotlin.math.min
 
 class MergeKSortedLists {
     fun mergeKLists(lists: Array<ListNode?>): ListNode? {
-        TODO()
+        val minHeap = PriorityQueue<ListNode>(compareBy { it.`val` })
+        lists.forEach { head ->
+            if (head != null) {
+                minHeap.offer(head)
+            }
+        }
+        val dummy = ListNode(0)
+        var cur = dummy
+        while(minHeap.isNotEmpty()){
+            val node = minHeap.poll()
+            cur.next=node
+            cur = node
+            if(node.next!=null) {
+                minHeap.offer(node.next)
+            }
+        }
+
+        return dummy.next
     }
 }
 

@@ -10,7 +10,15 @@ import java.util.*
 
 class KthLargestHeap {
     fun findKthLargest(nums: IntArray, k: Int): Int {
-        TODO()
+        val size = nums.size
+        val minHeap = PriorityQueue<Int>()
+        for ( num in num ){
+            minHeap.offer(num)
+            if(minHeap.size>k){
+                minHeap.poll()
+            }
+        }
+        return minHeap.peek()
     }
 }
 
