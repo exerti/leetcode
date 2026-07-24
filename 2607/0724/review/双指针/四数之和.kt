@@ -11,7 +11,43 @@ package review
 
 class FourSum {
     fun fourSum(nums: IntArray, target: Int): List<List<Int>> {
-        TODO()
+        nums.sort()
+        val size = nums.size
+        val result = mutableListOf<List<Int>>()
+        for (j in 0 until size - 3) {
+            if (j > 0 && nums[j - 1] == nums[j]) continue
+            for (i in j + 1 until size - 2) {
+                if (i > j + 1 && nums[i - 1] == nums[i]) continue
+                var left = i + 1
+                var right = size - 1
+                while (left < right) {
+                    val sum = nums[i] + nums[j] + nums[left] + nums[right]
+                    when {
+                        sum == target -> {
+                            result.add(
+                                intArrayOf(
+                                    nums[j],
+                                    nums[i],
+                                    nums[left],
+                                    nums[right]
+                                ).toList()
+                            )
+                            while (left < right && nums[left] == nums[left + 1]) left++
+                            while (left < right && nums[right] == nums[right - 1]) right--
+                            left++
+                            right--
+                        }
+                        sum > target -> right--
+                        else -> {
+                            left++
+                        }
+                    }
+                }
+
+
+            }
+        }
+        return result
     }
 }
 
