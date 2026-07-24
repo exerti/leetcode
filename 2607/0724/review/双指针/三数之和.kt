@@ -18,7 +18,7 @@ class ThreeSum {
             var left = i + 1
             var right = size - 1
             while (left < right) {
-                val sum = nums[i] + nums[left] + nums[right]
+                val sum = nums[i].toLong() + nums[left] + nums[right]
                 when {
                     sum == 0 -> {
                         result.add(intArrayOf(nums[i], nums[left], nums[right]).toList())

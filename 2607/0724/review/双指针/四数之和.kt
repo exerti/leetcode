@@ -21,7 +21,7 @@ class FourSum {
                 var left = i + 1
                 var right = size - 1
                 while (left < right) {
-                    val sum = nums[i] + nums[j] + nums[left] + nums[right]
+                    val sum = nums[i].toLong() + nums[j] + nums[left] + nums[right]
                     when {
                         sum == target -> {
                             result.add(
