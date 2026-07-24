@@ -11,7 +11,7 @@ package review.redo
  * 7. maxSum=0 导致全负数数组返回 0，应初始化为 dp[0] 或 nums[0]
  * 📈 掌握度: 1/5 | 累计错误: 7次 | 间隔: 1天
  */
-class Solution {
+class DpMaxSubArray {
     fun maxSubArray(nums: IntArray): Int {
         TODO()
     }

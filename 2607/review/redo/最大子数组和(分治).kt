@@ -8,7 +8,7 @@ package review.redo
  * 4. 参数名 riht 拼写错误，应为 right
  * 📈 掌握度: 1/5 | 累计错误: 4次 | 间隔: 1天
  */
-class Solution {
+class DivideMaxSubArray {
     fun maxSubArray(nums: IntArray): Int {
         TODO()
     }

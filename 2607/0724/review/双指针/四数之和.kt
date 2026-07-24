@@ -9,7 +9,7 @@ package review
  * 📈 掌握度: 1/5 | 累计错误: 4次 | 间隔: 1天
  */
 
-class Solution {
+class FourSum {
     fun fourSum(nums: IntArray, target: Int): List<List<Int>> {
         TODO()
     }

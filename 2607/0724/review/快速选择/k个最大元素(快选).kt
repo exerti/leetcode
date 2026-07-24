@@ -16,7 +16,7 @@ package review
 
 import java.util.*
 
-class Solution {
+class KthLargestQuickSelect {
     fun findKthLargest(nums: IntArray, k: Int): Int {
         TODO()
     }

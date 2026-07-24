@@ -8,7 +8,7 @@ package review
 
 import java.util.*
 
-class Solution {
+class KthLargestHeap {
     fun findKthLargest(nums: IntArray, k: Int): Int {
         TODO()
     }

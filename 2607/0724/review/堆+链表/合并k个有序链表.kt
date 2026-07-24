@@ -10,7 +10,7 @@ package review
 
 import java.util.*
 
-class Solution {
+class MergeKSortedLists {
     fun mergeKLists(lists: Array<ListNode?>): ListNode? {
         TODO()
     }

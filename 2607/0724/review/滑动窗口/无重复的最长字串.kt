@@ -8,7 +8,7 @@ package review
  * 📈 掌握度: 2/5 | 累计错误: 3次 | 间隔: 3天 | 下次复习: 07-26
  */
 
-class Solution {
+class LongestNoRepeatSubstring {
     fun lengthOfLongestSubstring(s: String): Int {
         TODO()
     }

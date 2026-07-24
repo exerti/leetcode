@@ -147,6 +147,9 @@
 - 按优先级从高到低，在 `{date}/review/redo/` 下创建骨架（平铺，不分算法子目录）
 - 如果文件已存在 → **跳过**（保护用户已写的代码）
 - 每个文件顶部注释标注上次失误
+- ⚠️ **类名必须唯一**：`class Solution` 会导致同包名下的 Redeclaration 冲突
+  - 命名规则：`{算法缩写}{题目简述}`，如 `DpMaxSubArray`、`HeapTopKFreq`、`ThreeSum`
+  - package 保持不变（`package review` 或 `package review.redo`），通过类名区分
 
 ### 模板
 ```kotlin
@@ -158,10 +161,14 @@ package review.redo
  * 2. xxx
  * 📈 掌握度: 1/5 | 累计错误: 4次 | 间隔: 1天
  */
-class Solution {
+class DpMaxSubArray {  // ← 唯一类名，非 Solution
     fun xxx(): ReturnType {
         TODO()
     }
+}
+
+fun main() {
+    val handler = DpMaxSubArray()::xxx  // ← 引用需同步更新
 }
 ```
 

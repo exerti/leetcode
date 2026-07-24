@@ -11,7 +11,7 @@ package review
 
 import java.util.*
 
-class Solution {
+class TopKFrequentHeap {
     fun topKFrequent(nums: IntArray, k: Int): IntArray {
         TODO()
     }

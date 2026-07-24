@@ -8,7 +8,7 @@ package review.redo
  * 4. sum == 0 硬编码，四数之和 target 由参数传入
  * 📈 掌握度: 1/5 | 累计错误: 4次 | 间隔: 1天
  */
-class Solution {
+class FourSum {
     fun fourSum(nums: IntArray, target: Int): List<List<Int>> {
         TODO()
     }

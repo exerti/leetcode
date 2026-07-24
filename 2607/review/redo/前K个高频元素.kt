@@ -8,7 +8,7 @@ package review.redo
  * 4. 返回 List<Int>，函数签名要求 IntArray，缺 toIntArray()
  * 📈 掌握度: 1/5 | 累计错误: 4次 | 间隔: 1天
  */
-class Solution {
+class TopKFrequentHeap {
     fun topKFrequent(nums: IntArray, k: Int): IntArray {
         TODO()
     }

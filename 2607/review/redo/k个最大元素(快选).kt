@@ -13,7 +13,7 @@ package review.redo
  * 9. import Solution3 未被使用
  * 📈 掌握度: 1/5 | 累计错误: 9次 | 间隔: 1天
  */
-class Solution {
+class KthLargestQuickSelect {
     fun findKthLargest(nums: IntArray, k: Int): Int {
         TODO()
     }

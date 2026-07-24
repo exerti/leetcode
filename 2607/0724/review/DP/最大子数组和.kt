@@ -12,9 +12,17 @@ package review
  * 📈 掌握度: 1/5 | 累计错误: 7次 | 间隔: 1天
  */
 
-class Solution {
+class DpMaxSubArray {
     fun maxSubArray(nums: IntArray): Int {
-        TODO()
+        val dp  = IntArray(nums.size)
+        dp[0]=nums[0]
+        var maxSum= dp[0]
+        val size = nums.size
+        for(i in 1..size-1){
+            dp[i] = maxOf(dp[i-1]+nums[i],nums[i])
+            maxSum = maxOf(maxSum,dp[i])
+        }
+        return maxSum
     }
 }
 
@@ -22,4 +30,8 @@ fun main() {
     // 测试用例
     val testCase1 = intArrayOf(-2, 1, -3, 4, -1, 2, 1, -5, 4) // 预期: 6
     val testCase2 = intArrayOf(-3, -1, -2)                      // 预期: -1 (全负数!)
+
+    val handler = DpMaxSubArray()::maxSubArray
+
+
 }

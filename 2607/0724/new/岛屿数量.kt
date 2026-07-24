@@ -12,7 +12,7 @@ package new
  * 三种解法：DFS / BFS / 并查集
  */
 
-class Solution {
+class NumIslands {
 
     // =====================================================================
     // 解法1：DFS O(m*n) O(m*n)

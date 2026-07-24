@@ -8,7 +8,7 @@ package review
  * 📈 掌握度: 1/5 | 累计错误: 3次 | 间隔: 1天
  */
 
-class Solution {
+class ThreeSum {
     fun threeSum(nums: IntArray): List<List<Int>> {
         TODO()
     }
