@@ -10,7 +10,33 @@ package review
 
 class ThreeSum {
     fun threeSum(nums: IntArray): List<List<Int>> {
-        TODO()
+        nums.sort()
+        val size = nums.size
+        val result = mutableListOf<List<Int>>()
+        for (i in 0 until size - 2) {
+            if (i > 0 && nums[i - 1] == nums[i]) continue
+            var left = i + 1
+            var right = size - 1
+            while (left < right) {
+                val sum = nums[i] + nums[left] + nums[right]
+                when {
+                    sum == 0 -> {
+                        result.add(intArrayOf(nums[i], nums[left], nums[right]).toList())
+                        while (left < right && nums[left] == nums[left + 1]) left++
+                        while (left < right && nums[right] == nums[right - 1]) right--
+                        left++
+                        right--
+                    }
+                    sum > 0 -> right--
+                    else -> {
+                        left++
+                    }
+                }
+            }
+
+
+        }
+        return result
     }
 }
 

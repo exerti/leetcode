@@ -21,10 +21,10 @@ class DivideMaxSubArray {
         val _leftMax = dfs(nums, left, mid)
         val _rightMax = dfs(nums, mid + 1, right)
         var _crossMax: Int
-        var crossLeftMax = 0
-        var leftSum = 0
-        var crossRightMax = 0
-        var rightSum = 0
+        var crossLeftMax = Int.MIN_VALUE
+        var leftSum =  0
+        var crossRightMax =  Int.MIN_VALUE
+        var rightSum =  0
         for (i in mid downTo left) {
             leftSum += nums[i]
             crossLeftMax = maxOf(crossLeftMax, leftSum)
