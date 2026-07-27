@@ -8,17 +8,7 @@
       "mcp__filesystem__edit_file",
       "mcp__filesystem__list_allowed_directories",
       "mcp__filesystem__read_multiple_files",
-      "mcp__sequential-thinking__sequentialthinking",
-      "mcp__filesystem__move_file",
-      "Bash(mv /Users/gaodun/Desktop/wxz/code/错题记录.csv /Users/gaodun/Desktop/wxz/code/.claude/review/错题记录.csv)",
-      "Bash(mv /Users/gaodun/Desktop/wxz/code/题目掌握度.csv /Users/gaodun/Desktop/wxz/code/.claude/review/题目掌握度.csv)",
-      "mcp__filesystem__directory_tree",
-      "mcp__filesystem__read_text_file",
-      "mcp__filesystem__create_directory",
-      "Bash(git add *)",
-      "Bash(git commit *)",
-      "Bash(git push *)",
-      "Bash(python3 *)"
+      "mcp__sequential-thinking__sequentialthinking"
     ]
   },
   "enabledMcpjsonServers": [
